@@ -71,15 +71,14 @@ h0avg.y /= n
 
 #Variance
 VarH0 = 0
-i = 0
-for sample in DataSamples:
-    h = H0Models[i]
-    for point in sample:
-        x0 = point[0]
-        VarH0 += (h.predict(x0)-h0avg.predict(x0))**2
-    i += 1
+for h in H0Models:
+    for sample in DataSamples:
+        for point in sample:
+            x0 = point[0]
+            VarH0 += (h.predict(x0)-h0avg.predict(x0))**2
+    
 
-VarH0 /= 50*2
+VarH0 /= 50*2*50
 print("The Variance for H0 = ",VarH0)
 
 #Bias^2
@@ -124,15 +123,14 @@ h1avg.b /= n
 
 #Variance
 VarH1 = 0
-i = 0
-for sample in DataSamples:
-    h = H1Models[i]
-    for point in sample:
-        x0 = point[0]
-        VarH1 += (h.predict(x0)-h1avg.predict(x0))**2
-    i += 1
+for h in H1Models:
+    for sample in DataSamples:
+        for point in sample:
+            x0 = point[0]
+            VarH1 += (h.predict(x0)-h1avg.predict(x0))**2
+   
 
-VarH1 /= 50*2
+VarH1 /= 50*2*50
 print("The Variance for H1 = ",VarH1)
 
 #Bias^2
